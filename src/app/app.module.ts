@@ -8,12 +8,14 @@ import { SessionsListComponent } from './sessions/sessions-list/sessions-list.co
 import { HomeComponent } from './home/home.component';
 import { AppRoutingModule } from './app-routing.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-
+import { UsersComponent } from './users/users/users.component';
+import { UsersService } from './users/users.service';
 @NgModule({
   declarations: [
     AppComponent,
     SessionsListComponent,
-    HomeComponent
+    HomeComponent,
+    UsersComponent
   ],
   imports: [
     BrowserModule,
@@ -21,7 +23,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     AppRoutingModule,
     NgbModule
   ],
-  providers: [SessionsService],
+  providers: [SessionsService, UsersService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
