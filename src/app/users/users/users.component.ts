@@ -1,18 +1,22 @@
 import { Component, OnInit } from '@angular/core';
-import { UsersService } from '../users.service';
+import { UsersService, IUsers } from '../users.service';
+
 
 @Component({
   selector: 'app-users',
   templateUrl: './users.component.html',
-  styleUrls: ['./users.component.css']
+  styleUrls: ['./users.component.less']
 })
 export class UsersComponent implements OnInit {
-  users = [
-  ];
+
+users: IUsers[];
+
   constructor(private usersService: UsersService) { }
 
   ngOnInit() {
-    this.users = this.usersService.getUsers();
+    this.usersService.getUsers()
+    .subscribe(
+      (users) => this.users = users,
+      );
   }
-
 }
