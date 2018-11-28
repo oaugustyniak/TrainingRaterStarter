@@ -1,4 +1,16 @@
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs/Observable';
+
+export interface ISession {
+  id: number;
+  name: string;
+  location: string;
+  startTime: string;
+  createdAt: string;
+  updatedAt: string;
+}
+
 
 @Injectable()
 export class SessionsService {
@@ -6,9 +18,11 @@ export class SessionsService {
   { Name: 'Scott Teaches AWS', Location: 'Miles-U 2' },
   { Name: 'Jack Teaches PODIS', Location: 'Jacks Desk' },
   ];
-  constructor() { }
+  constructor(
+    private http: HttpClient,
+  ) { }
 
-  getSessions(): {}[] {
-    return this.sessionsMock;
+  getSessions(): Observable<ISession[]> {
+    return this.http.get<ISession[]>('http://localhost:3000/sessions');
   }
 }
