@@ -14,15 +14,11 @@ export interface ISession {
 
 @Injectable()
 export class SessionsService {
-  sessionsMock = [{ Name: 'John Teaches Angular', Location: 'Miles-U 1' },
-  { Name: 'Scott Teaches AWS', Location: 'Miles-U 2' },
-  { Name: 'Jack Teaches PODIS', Location: 'Jacks Desk' },
-  ];
   constructor(
     private http: HttpClient,
   ) { }
 
   getSessions(): Observable<ISession[]> {
-    return this.http.get<ISession[]>('http://localhost:3000/sessions');
+    return this.http.get<ISession[]>('http://localhost:4200/sessions');
   }
 }

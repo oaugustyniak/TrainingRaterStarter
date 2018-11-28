@@ -19,7 +19,7 @@ export class UsersService {
   ) { }
 
 getUsers(): Observable<IUsers[]> {
-  return this.http.get<IUsers[]>('http://localhost:3000/users');
+  return this.http.get<IUsers[]>('http://localhost:4200/users');
   }
 
 }
