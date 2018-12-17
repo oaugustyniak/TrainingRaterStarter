@@ -10,7 +10,7 @@ import { LoginComponent } from './common/auth/login.component';
 
 const appRoutes: Routes = [
   { path: 'home', component: HomeComponent },
-  { path: 'sessions', component: SessionsListComponent },
+  { path: 'sessions', component: SessionsListComponent, canActivate: [AuthGuard] },
   { path: 'users', component: UsersComponent },
   { path: 'sessions/:sessionId', component: SessionsDetailComponent },
   { path: 'users/:userId', component: UsersDetailComponent },

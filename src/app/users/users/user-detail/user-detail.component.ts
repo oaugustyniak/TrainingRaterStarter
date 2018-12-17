@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { IUser, UsersService } from '../users.service';
+import { IUser, UsersService } from './users/users.service';
+import { ToastsManager } from 'ng2-toastr';
 
 @Component({
     templateUrl: './user-detail.component.html',
@@ -12,6 +13,7 @@ export class UsersDetailComponent implements OnInit {
         private route: ActivatedRoute,
         private router: Router,
         private usersService: UsersService,
+        private toastsManager: ToastsManager,
     ) { }
 
      ngOnInit() {
@@ -30,6 +32,9 @@ export class UsersDetailComponent implements OnInit {
                 username: '',
                 firstname: '',
                 lastname: '',
+                email: '',
+                phone: '',
+                password: '',
                 createdAt: null,
                 updatedAt: null,
             };
@@ -48,6 +53,7 @@ save(): void {
   }
   this.usersService.save(this.user)
       .subscribe((user) => {
+      this.toastsManager.success('User saved');
       this.router.navigate(['users']);
       });
 }

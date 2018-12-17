@@ -13,7 +13,8 @@ export class UsersComponent implements OnInit {
   users: IUsers[] = [
   ];
 
-  constructor(private usersService: UsersService,
+  constructor
+    (private usersService: UsersService,
     private router: Router,
     ) { }
 

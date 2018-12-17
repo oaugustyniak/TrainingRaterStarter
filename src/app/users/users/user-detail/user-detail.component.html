@@ -11,6 +11,16 @@
  
 <label>Last Name</label>
 <input type="text" class="form-control" [(ngModel)]="user.lastName" />
+
+<label>Email</label>
+<input type="text" class="form-control" [(ngModel)]="user.email" />
+         
+<label>Phone</label>
+<input type="text" class="form-control" [(ngModel)]="user.phone" />
+
+<label>Password</label>
+<input type="text" class="form-control" [(ngModel)]="user.password" />
+
 <br/>
 <button class="btn btn-primary" (click)="save()">Save</button>
 <button class="btn btn-default" (click)="cancel()">Cancel</button>
