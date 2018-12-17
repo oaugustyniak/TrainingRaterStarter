@@ -3,9 +3,14 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 
 export interface IUsers {
+  id: any;
   userName: string;
   firstName: string;
   lastName: string;
+  email: string;
+  phone: string;
+  role: string;
+  password: string;
   createdAt: string;
   updatedAt: string;
 }
@@ -21,5 +26,17 @@ export class UsersService {
 getUsers(): Observable<IUsers[]> {
   return this.http.get<IUsers[]>('http://localhost:4200/users');
   }
+
+getUserById(id: number): Observable<IUsers> {
+  return this.http.get<IUsers>(`http://localhost:3000/users/${id}`);
+}
+
+save(user: IUsers): Observable<IUsers | number[]> {
+    if (user.id) {
+        return this.http.put<number[]>(`http://localhost:3000/users`, user);
+    } else {
+        return this.http.post<IUsers>(`http://localhost:3000/users`, user);
+    }
+}
 
 }

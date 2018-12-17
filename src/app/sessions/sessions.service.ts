@@ -21,4 +21,16 @@ export class SessionsService {
   getSessions(): Observable<ISession[]> {
     return this.http.get<ISession[]>('http://localhost:4200/sessions');
   }
+
+  getSessionById(id: number): Observable<ISession> {
+    return this.http.get<ISession>(`http://localhost:4200/sessions/${id}`);
+  }
+
+  save(session: ISession): Observable<ISession | number[]> {
+    if (session.id) {
+      return this.http.put<number[]>(`http://localhost:4200/sessions`, session);
+    } else {
+      return this.http.post<ISession>(`http://localhost:4200/sessions`, session);
+    }
+}
 }
